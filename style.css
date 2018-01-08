@@ -1,0 +1,58 @@
+
+@charset "utf-8";
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  font-family: 'Microsoft YaHei UI Light', Arial, Helvetica;
+  font-size: 12px;
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+}
+
+button, input, select {
+  font-family: 'Microsoft YaHei UI Light', Arial, Helvetica;
+}
+
+input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
+  color: #c5c5c6;
+}
+#container{
+  position: relative;
+  width: 3.75rem;
+  min-height: 100%;
+  margin: 0 auto;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.tab-selector {
+  width: 3.75rem;
+}
+
+.tab-selector {
+  overflow: hidden;
+}
+.tab-selector ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  width: 100%;
+}
+.tab-selector li {
+  float: left;
+  display: flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  cursor: pointer;
+  width: 0.8rem;
+  height:0.44rem;
+  text-align: center;
+  font-size: 0.14rem;
+  color: #dddddd;
+}
+
+.tab-selector li.selected {
+  color: #FD3259;
+}

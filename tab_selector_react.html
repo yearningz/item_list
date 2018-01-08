@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1,user-scalable=no">
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="visual-width" content="375">
+    <script src="js/resize.js" type="text/javascript"></script>
+    <script src="js/react.js"></script>
+    <script src="js/JSXTransformer.js"></script>
+    <link rel="stylesheet" tpe="text/css" href="style.css"/>
+    <title></title>
+  </head>
+  <body>
+    <div id="container"></div>
+    <script type="text/jsx">
+      var data = [
+           {name: 'All', value: 'all'},
+        {name: 'Type', value: 'type',classlist:[{title:'',value:''},{title:'',value:''},{title:'',value:''}]},
+        {name: 'Position', value: 'position',classlist:[{title:'',value:''},{title:'',value:''},{title:'',value:''}]},
+        {name: 'Year', value: 'year',classlist:[{title:'',value:''},{title:'',value:''},{title:'',value:''}]}
+      ];
+
+      var TabSelector = React.createClass({
+          getInitialState: function() {
+              return {selected: this.props.selected};
+          },
+          handleOnClick: function (evt) {
+              this.setState({'selected': evt.target.getAttribute('data-value')})
+          },
+          render: function() {
+              var tabs = this.props.data.map(function (item) {
+                  var selected = item.value == this.state.selected ? 'selected' : '';
+                  return <li data-value={item.value}
+                             className={selected}
+                             onClick={this.handleOnClick}
+                  >{item.name}</li>
+                      ;
+              }, this);
+              return <div className="tab-selector">
+                <ul>
+                    {tabs}
+                </ul>
+              </div>
+                  ;
+          }
+      });
+      React.render(
+        TabSelector({data: data, selected: 'all'}),
+        document.getElementById('container')
+      );
+    </script>
+  </body>
+</html>
