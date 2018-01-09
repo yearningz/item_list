@@ -18,10 +18,11 @@
     <script type="text/babel">
         var data = [
             {name: 'All', value: 'all'},
-            {name: 'Type', value: 'type',classlist:[{title:'',value:''},{title:'',value:''},{title:'',value:''}]},
-            {name: 'Position', value: 'position',classlist:[{title:'',value:''},{title:'',value:''},{title:'',value:''}]},
+            {name: 'Type', value: 'type',classlist:[{title:'云闪付营销活动',value:''},{title:'云闪付营销活动',value:''},{title:'云闪付营销活动',value:''},{title:'云闪付营销活动',value:''},{title:'云闪付营销活动',value:''}]},
+            {name: 'Position', value: 'position',classlist:[{title:'云闪付营销活动',value:''},{title:'云闪付营销活动',value:''},{title:'',value:''}]},
             {name: 'Year', value: 'year',classlist:[{title:'',value:''},{title:'',value:''},{title:'',value:''}]}
         ];
+
         var TabSelector = React.createClass({
             getInitialState: function() {
                 return {selected: this.props.selected};
@@ -32,10 +33,27 @@
             render: function() {
                 var tabs = this.props.data.map(function (item) {
                     var selected = item.value == this.state.selected ? 'selected' : '';
-                    return <li data-value={item.value}
-                               className={selected}
-                               onClick={this.handleOnClick}
-                    >{item.name}</li>
+                    var repoList=''
+                    if(item.classlist&&selected){
+                        var repos = item.classlist;
+                        var repoList = repos.map(function (repo, index) {
+                            return (
+                                <div style={{display:'block'}} className={selected} key={index} data-value={repo.value}><a href={repo.html_url}></a>{repo.title}</div>
+                            );
+                        });
+                    }
+
+                    return(
+                    <div className="tab-selector-item">
+                      <li data-value={item.value}
+                             className={selected}
+                             onClick={this.handleOnClick}
+                    >{item.name}
+                    </li>
+                      <div className="tab-selector-list">
+                          {repoList}
+                      </div>
+                    </div>)
                         ;
                 }, this);
                 return <div className="tab-selector">

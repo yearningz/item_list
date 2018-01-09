@@ -28,6 +28,7 @@ input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
 
 .tab-selector {
   width: 3.75rem;
+  position: fixed;
 }
 
 .tab-selector {
@@ -40,19 +41,40 @@ input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
   width: 100%;
 }
 .tab-selector li {
-  float: left;
+  position: fixed;
   display: flex;
   flex-direction:column;
   justify-content:center;
   align-items:center;
   cursor: pointer;
-  width: 0.8rem;
-  height:0.44rem;
+  width: 0.7rem;
+  height:0.34rem;
   text-align: center;
   font-size: 0.14rem;
-  color: #dddddd;
+  color: #c7c7c7;
 }
-
+.tab-selector-list{
+  width: auto;
+  cursor: pointer;
+  margin-left: 0.7rem;
+  height: 2rem;
+}
+.tab-selector-list > div{
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  font-size: 0.1rem;
+  width: 2.5rem;
+}
+.tab-selector-item{
+  height:0.4rem;
+  width: 3.75rem;
+  color: #c7c7c7;
+}
 .tab-selector li.selected {
   color: #FD3259;
+}
+.tab-selector-list > div.selected {
+  display: block;
+  color: #c7c7c7;
 }
